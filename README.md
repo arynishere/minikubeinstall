@@ -5,10 +5,10 @@
 This repository contains an Ansible playbook to set up Minikube with the Docker driver on Ubuntu 22.04.
 
 ## Minikube System Requirements
-2 GB RAM or more
-2 CPU / vCPU or more
-20 GB free hard disk space or more
-Docker / Virtual Machine Manager – KVM & VirtualBox
+- 2 GB RAM or more
+- 2 CPU / vCPU or more
+- 20 GB free hard disk space or more
+- Docker / Virtual Machine Manager – KVM & VirtualBox
 
 ## Instructions
 
