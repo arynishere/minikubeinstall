@@ -1,0 +1,63 @@
+---
+- name: Install Minikube with Docker driver
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Update and upgrade system
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Install required packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - curl
+        - wget
+        - apt-transport-https
+        - ca-certificates
+        - software-properties-common
+        - conntrack
+
+    - name: Install Docker
+      become: yes
+      shell: |
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sh get-docker.sh
+        usermod -aG docker $USER
+      args:
+        creates: /usr/bin/docker  # Adjust path if necessary
+
+    - name: Start Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add user to the docker group
+      user:
+        name: "{{ ansible_env.USER }}"
+        groups: docker
+        append: yes
+
+    - name: Download and install Minikube binary
+      shell: "curl -Lo /usr/local/bin/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /usr/local/bin/minikube"
+      args:
+        creates: /usr/local/bin/minikube
+
+    - name: Give full access to Minikube binary
+      command: "chmod 777 /usr/local/bin/minikube"
+
+    - name: Display Minikube version
+      command: "/usr/local/bin/minikube version"
+
+    - name: Download and install kubectl
+      shell: "curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && mv kubectl /usr/local/bin/"
+      args:
+        creates: /usr/local/bin/kubectl
+
+    - name: Start Minikube with none driver
+      command: "/usr/local/bin/minikube start --driver=docker -- force "
+      args:
+        creates: $HOME/.minikube
