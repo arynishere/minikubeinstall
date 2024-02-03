@@ -60,11 +60,3 @@ kubectl version -o yaml
 
 If you encounter any issues, refer to the troubleshooting section in the playbook or open an issue on GitHub.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-Replace "your-username" with your GitHub username. You may want to customize this README further based on the specific details of your project or any additional instructions you want to provide. Feel free to include more details about Minikube, Docker, or any specific configurations used in your playbook.
-
-Remember to also include a `LICENSE` file if you decide on a specific license for your project.
