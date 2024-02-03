@@ -36,13 +36,7 @@ You will be prompted for the sudo (root) password.
 
 ## Usage
 
-- Start Minikube with the "none" driver.
 
-```bash
-minikube start --driver=none
-```
-
-This will start Minikube without a VM.
 
 - Verify Minikube status.
 
