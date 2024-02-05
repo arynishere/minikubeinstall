@@ -15,7 +15,7 @@ This repository contains an Ansible playbook to set up Minikube with the Docker 
 1. Clone this repository to your local machine.
 
 ```bash
-git clone https://https://github.com/arynishere/minikubeinstall.git
+git clone https://github.com/arynishere/minikubeinstall.git
 ```
 
 2. Navigate to the repository directory.
