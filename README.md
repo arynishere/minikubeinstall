@@ -27,7 +27,7 @@ cd minikubeinstall
 3. Run the Ansible playbook.
 
 ```bash
-ansible-playbook minikubeinstall.yml -K
+ansible-playbook minikube.yml -K
 ```
 
 You will be prompted for the sudo (root) password.
