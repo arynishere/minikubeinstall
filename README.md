@@ -21,13 +21,13 @@ git clone https://github.com/arynishere/minikubeinstall.git
 2. Navigate to the repository directory.
 
 ```bash
-cd minikube-docker-ansible
+cd minikubeinstall
 ```
 
 3. Run the Ansible playbook.
 
 ```bash
-ansible-playbook install_minikube.yml -K
+ansible-playbook minikubeinstall.yml -K
 ```
 
 You will be prompted for the sudo (root) password.
